@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link type = "text/css" rel = "stylesheet" href = "/stylesheets/reset.css">
+	<link type = "text/css" rel="stylesheet" href="/stylesheets/main.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+   $(".person_detail_tab li").click(function(){
+        
+$(this).addClass("active").siblings().removeClass("active");//removeClass就是删除当前其他类；只有当前对象有addClass("selected")；siblings()意思就是当前对象的同级元素，removeClass就是删除； 
+$(".myContent > div").eq($(".person_detail_tab li").index(this)).addClass("current_on").siblings().removeClass("current_on"); 
+
+  })
+ })
+
+  </script>
+</head>
+<body>
+	<div class = "person_space">
+<!--     <div class = "headerBar">
+  <div class = "comWidth"> 
+    <div class="left_logo lf"><a href="#"><img src="images/logo.jpg" alt="穿衣分享"></a></div>
+    <div class="right_login rf">
+      <ul class="option" id="option">      
+      <li class="signin">
+        <a href="javascript:showDialog('in_dialog');">登&nbsp;陆</a></li>
+          <li class="signup">
+              <a href="javascript:showDialog('up_dialog');">注&nbsp;册</a></li>
+        </ul>
+    </div>
+      <script type="text/javascript" src="/javascripts/sign_in_up.js"></script>
+  </div>
+</div> -->
+<%- include headerBar %>
+		<div class="persional_main">
+     	 <div class="persional_property comWidth">
+       	 	<div class="person_info_con clearfix">
+          	<dl class="person-photo lf">
+                      <dt><a href="javascript:;"><img src="images/person-photo.jpg" class="header"><span class="edit_person_pic"></span></a></dt>
+            <dd class="focus_num">关注<b><a href="#" target="_blank">0</a></b></dd>
+            <dd class="fans_num">粉丝<b><a href="#" target="_blank">0</a></b></dd>
+         	 </dl>
+          	<dl class="person-info lf">
+            <dt class="person-nick-name">
+            			<span>昵称</span></dt>
+            <dd class="person-detail"> 
+            		<span class="info_null">性别</span><span>|</span><span class="info_null">年龄</span><span>|</span><span class="info_null">身份特征</span><span>|</span><span class="info_null">地区</span> </dd>
+            <dd class="person-sign">个人简介，兴趣，爱好等</dd>
+            <dd class="person-sign">行为标签（后期修改）</dd>
+
+             </dl>
+        
+        	</div>
+      	</div>
+<div class="person_Publish_Collect comWidth" id="person_Publish_Collect">
+        <div class="person_tab">
+          <ul class="person_detail_tab">
+            <li class="active">我发布的搭配<span></span></li>
+            <li >我收藏的搭配<span></span></li>
+          </ul>
+        </div>
+        <div class="myContent" id="myContent">
+        <div class="myPublish_content current_on comWidth">
+          <div  class="myDetails current_on">
+            <div class="mod_field_skill">
+              <div class="">
+                <div class="tags clearfix">                               
+                  
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div class="myCollect_content comWidth">
+          <div nodetype="myCollect" nodeindex="my3" data-modal="tab-layer" class="myCollect">
+            <div data-bind="collect" class="mod-my-collect">
+              <div class="silder-wraper">
+                <div class="silder"><i class="active"></i>
+                  <div class="wraper">
+                    <ul data-bind="menu" class="clearfix">
+                      <li data-bind="menuItem"><em></em><span data-bind="menuText" class="J-menu"></span></li>
+                    
+                      <li data-bind="menuItem"><em></em><span data-bind="menuText" class="J-menu"></span></li>
+                    </ul>
+                  </div>
+                </div>
+         <div class="operate clearfix"><!--        <span class="right icon-caret-left none J-right"></span><span class="left icon-caret-right J-left"></span>  --></div>
+              </div>
+              <div class="silder-content">
+                <ul data-bind="list">
+                  <li id="7100733" data-bind="ids"></li>
+                
+                </ul>
+                <ul class="J-more"></ul>
+              </div><a href="#" class="more" style="display: none;">显示更多<i class="icon-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+
+
+
+      </div>
+     
+ </div> 
+
+ 
+
+
+      <div class="pop_edit edit_intro" style="display:none;">
+        <h3>编辑简介</h3><a href="#" nodetype="close" class="close">×</a>
+        <div style="background: #f3f3f3; border:1px solid #DCDCDC; margin:0 10px  20px;color:#333; font-size:16px; line-height:30px; padding:0 5px;">
+        	<span>用户名 : </span><span style="color: #666666;">rsylqc</span>
+        </div>
+        <div class="context">
+          <form id="form" nodetype="form-popup" class="form">
+            <ul>
+              <li class="mp_dl"><em class="red">*</em><span>昵称：
+                  <input name="nickname" nodetype="nickName" important="yes" type="text" placeholder="支持中文、英文、数字、_、-" maxlen="20" class="nick_name mp_field1">
+                  <!--em.nick_tip 昵称已被使用，请重新输入。--></span><span nodetype="realName" class="realName mp_label">实名：
+                  <input name="realname" nodetype="userName" type="text" maxlen="15" class="user_name mp_field2"><i class="mp_em_i">已认证</i></span><a href="https://my.csdn.net/my/account/privacy" class="privacy" target="_blank">仅自己可见</a></li>
+              <li><span>职位：
+                  <input name="curjob" nodetype="job" type="text" maxlen="20" class="job mp_field1"></span><span class="mp_label">性别：
+                  <input name="gender" type="radio" value="1" class="radio_sex">男
+                  <input name="gender" type="radio" value="2" class="radio_sex">女</span></li>
+              <li><span>生日：
+                  <input name="birthday" nodetype="birthday" type="text" onclick="WdatePicker()" class="birthday Wdate mp_field1"></span><span>行业：
+                  <select name="industrytype" class="industry">
+                    <option value="0">选择行业</option>
+                  </select></span></li>
+              <li class="region">地区：
+                <select name="country" type="region" class="country">
+                  <option value="0">国家</option>
+                </select>
+                <select name="province" type="region" class="prov">
+                  <option value="0">省级</option>
+                </select>
+                <select name="city" type="region" class="city">
+                  <option value="0">市级</option>
+                </select>
+                <select name="district" type="region" class="district">
+                  <option value="0"></option>
+                </select>
+              </li>
+              <li>简述：
+                <textarea name="selfdesc" nodetype="selfdesc" placeholder="300字以内" maxlen="300" class="intro_info mp_wid" style="width:560px"></textarea>
+                <span class="info-alert">您还可以输入<em>300</em>个字符</span>
+              </li>
+            </ul>
+          </form>
+        </div>
+        <div class="success"><a href="#" nodetype="cancel" class="cancel">取消</a><a href="#" nodetype="ok" class="ok">保存</a></div>
+      </div>
+
+
+
+      <div class="pop_edit edit_header" style="top: 254.5px; opacity: 0; display: none;">
+        <div class="context">
+          <form id="form" nodetype="form-popup" class="form" method="post" enctype="multipart/form-data">
+            <a href="#" class="change"><span class="icon-picture"></span>选择照片
+              <input id="file" type="file" name="tmp_avatar_file" class="file">
+            </a>
+            <div class="des">仅支持JPG,GIF,PNG格式;文件小于5M</div>
+            <div class="headers clearfix">
+              <div id="big" nodetype="big" style="position: relative; line-height: 250px;" class="big"><img src="/uploads/avatar/6/E/1/1_rsylqc.jpg?1442642537780" id="source-image" class="cut-img" style="width: 250px; height: 250px; vertical-align: middle;"><canvas width="250" height="250" style="display: none;"></canvas><div id="drag" class="drag ui-draggable ui-resizable" style="position: absolute; width: 200px; height: 200px; left: 25px; top: 25px; cursor: move; border: 3px dotted rgb(255, 255, 255); background-color: rgba(255, 255, 255, 0);"><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div></div></div>
+              <div class="pic">
+                <div nodetype="multiImage" class="p150 multiImage"><canvas width="150" height="150"></canvas></div><span>150 X 150</span>
+              </div>
+              <div class="pic">
+                <div nodetype="multiImage" class="p75 multiImage"><canvas width="75" height="75"></canvas></div><span>75 X 75</span>
+              </div>
+              <div class="pic">
+                <div nodetype="multiImage" class="p50 multiImage"><canvas width="50" height="50"></canvas></div><span>50 X 50</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+		<div clsaa="footer"></div>
+    </div>
+</body>
+</html>
