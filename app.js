@@ -54,6 +54,10 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
+
+//app.use(favicon());
+
 // error handlers
 
 // development error handler

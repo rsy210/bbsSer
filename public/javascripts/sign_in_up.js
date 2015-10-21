@@ -1,15 +1,15 @@
 var innerH = '<div class="signin_dialog" id="in_dialog" >'
 		innerH+='<div class="signin_dialog_title" id="in_dialog_title"><span class="signin_title"><h3>登&nbsp;陆</h3></span><a class="signin_dialog_closebutton" href="javascript:hideDialog(\'in_dialog\');"></a></div>'
-	innerH+='<div class="sign_layer"><form class="signin_layer" method="post"><div class="signin_dialog_content">'
-		innerH+='<div class="signin_dialog_input"><input type="text" placeholder="请输入登陆账号" class="sign_dialog_input_username"></div>'
-		innerH+='<div class="signin_dialog_input"><input type="password" placeholder="请输入账户密码" class="sign_dialog_input_password"></div>'
+	innerH+='<div class="sign_layer"><form class="signin_layer" action="/login" method="post"><div class="signin_dialog_content">'
+		innerH+='<div class="signin_dialog_input"><input type="email" name="userEmail" placeholder="请输入登陆账号" class="sign_dialog_input_username"></div>'
+		innerH+='<div class="signin_dialog_input"><input type="password" name="password" placeholder="请输入账户密码" class="sign_dialog_input_password"></div>'
 		innerH+='<div class="about_member_password">'
 			innerH+='<input class="member_password" id="member_password" type="checkbox" value="member_password" checked="checked">'
 			innerH+='<label class="member_passwordlabel" id="member_passwordlabel" for="member_Password">下次自动登录</label>'
 			innerH+='<a class="forget_password rf" id="forget_password" href="#" target="_blank">忘记密码？</a>'
 		innerH+='</div>'
 		innerH+='<div class="signin_dialog_subbox">'
-			innerH+='<input type="button" value="确认登陆" class="signin_dialog_submit">'
+			innerH+='<input type="submit" value="确认登陆" class="signin_dialog_submit">'
 			innerH+='<div class="no_account clearfix"><a class="no_account_number rf" id="no_account_number" href="javascript:hideDialog(\'in_dialog\');showDialog(\'up_dialog\');">无账号注册</a></div>'
 		innerH+='</div>'
 	innerH+= '</div></form></div>'
@@ -63,6 +63,18 @@ function bgchange(obj){
 //获取id
 function getId(id){
 	return document.getElementById(id);
+}
+//class
+function getByClass(pId,className){
+	var Arr = new Array(); //存储获取的c指定lass元素
+	var parent = document.getElementById(pId)
+	var oElements = parent.getElementsByTagName('*');
+	for (var i = 0; i < oElements.length; i++) {
+		if(oElements[i].className == className){
+		Arr.push(oElements[i]);
+	}
+	}
+	return Arr;
 }
 
 //自动居中，登陆浮层
@@ -172,4 +184,19 @@ window.onresize = function(){
 	autoCenter(getId('up_dialog'));
 	autoCenter(getId('in_dialog'));
 fillToBody(getId('mask'));
+}
+
+
+
+
+//鼠标经过登陆区域，弹出个人信息框
+var signId = getId('signined');
+console.log(signId);
+	if(signId){
+getId('signined').addEventListener('mouseover',function(){
+	getId('pop-message').style.display="block";
+})
+getId('signined').addEventListener('mouseout',function(){
+	getId('pop-message').style.display="none ";
+})
 }

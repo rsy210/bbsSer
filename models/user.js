@@ -41,15 +41,15 @@ User.prototype.save = function(callback){
 				if(err){
 					return callback(err);
 				}
-				callback(null,user[0]);//成功! err为null，并返回存储后的用户文档
+				callback(null,user);//成功! err为null，并返回存储后的用户文档
 			});
 		});
 	});
 }
 
 
-//读取用户信息
-User.get = function(name,callback){
+//根据用户名读取用户信息
+User.getName = function(name,callback){
 	//打开数据库
 	mongodb.open(function(err,db){
 		if(err){return callback(err);}
@@ -62,6 +62,30 @@ User.get = function(name,callback){
 			//查找用户名（name键）值为name的一个文档
 			collection.findOne({
 				name:name
+			},function(err,user){
+				mongodb.close();
+				if(err){return callback(err);}
+				callback(null,user);//成功，返回查询的用户信息
+			});
+		});
+	});
+}
+
+
+//根据邮箱读取用户信息
+User.getEmail = function(email,callback){
+	//打开数据库
+	mongodb.open(function(err,db){
+		if(err){return callback(err);}
+		//读取users信息
+		db.collection('users',function(err,collection){
+			if(err){
+				mongodb.close();
+				return callback(err);
+			}
+			//查找用户名（name键）值为name的一个文档
+			collection.findOne({
+				email:email
 			},function(err,user){
 				mongodb.close();
 				if(err){return callback(err);}

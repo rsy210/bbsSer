@@ -29,7 +29,7 @@
 .right_login ul{
     width: 160px;height: 80px;
 }
-.right_login a{
+.sign-style{
     display: block;
 height: 100%;
     font-size: 14px;
@@ -37,7 +37,13 @@ height: 100%;
     line-height: 80px;
     color: #787D82;
 }
-.right_login a:hover{color: #000; font-size: 18px;}
+.sign-style:hover{color: #000; font-size: 18px;}
+
+.pop-message{
+    width:100px;height: 100px;
+    background:#fff; 
+    display :none ;}
+.pop-message a{color:#787D82;}
 
 /*点击登陆弹出框*/
 .signin_dialog,.signup_dialog{
@@ -84,8 +90,6 @@ display: inline-block;
 vertical-align: top;
 border-color: #000000;
 }
-
-
 
 /*image_page*/
 .image_page{position: relative;display: block;margin: 40px 0px 0px 0px;}
